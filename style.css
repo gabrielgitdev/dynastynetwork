@@ -1,0 +1,844 @@
+/*======================== RESET ========================*/
+
+* {
+  margin: 0;
+  padding: 0%;
+  box-sizing: border-box;
+}
+ul{
+  /*para tirar as bolinhas padroes do documento inteiro*/
+  /*tudo que tenha ul, não tera as bolinhas padrao das listas*/
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+}
+
+img{
+  width: 100%;
+  height: auto;
+}
+
+
+/*======================== VARIABLES ========================*/
+:root{
+  --header-height: 4.5rem;
+
+  /*colors*/
+  --hue: 207;
+  /* HSL color mode */
+  --base-color: hsl(var(--hue) 86% 45%); /*azul degrade var darkmode*/
+  --base-colorbotton: hsl(var(--hue) 70% 30%); /*Botton select*/
+
+  /*Color fix*/
+  --base-colortext: rgb(0, 0, 0); /*Preto var darkmode*/
+  --background: rgb(255, 255, 255); /*Fundo var darkmode*/
+  --bg-header: rgba(255, 255, 255, 0.569); /*Titulo var darkmode*/
+
+  --base-colorwhite: rgb(255, 255, 255); /*Branco text button*/
+  --base-card: rgb(255, 255, 255);
+  --backgroundcontact: rgb(239, 239, 239);
+
+  /* Fonts */
+  --subtitle-font-size: 1rem;
+  
+  --title-font: "Poppns", sans-serif;
+  --body-font: "DM Sans", sans-serif;
+}
+
+
+/*======================== BASE ========================*/
+/*clicando ele rola a pagina para o objetivo que foi clicado*/
+html{
+  scroll-behavior: smooth;
+}
+/*======================== SCROLLBAR ========================*/
+::-webkit-scrollbar{
+  width: 12px;
+
+}
+::-webkit-scrollbar-track{
+  background: none;
+}
+::-webkit-scrollbar-thumb{
+  background: var(--base-color);
+  border-radius: 2rem;
+}
+
+body{
+  font: 400 1rem var(--body-font);
+  color: var(--base-colortext); /*cor do menu*/
+  background: var(--background);
+  -webkit-font-smoothing: antialiased;
+}
+
+.title{
+  font: 700 1.875rem var(--title-font);
+  color: var(--base-colortext);
+  -webkit-font-smoothing: auto;
+}
+.titlecardC{
+  font: 700 1.400rem var(--title-font);
+  color: var(--base-colortext);
+  -webkit-font-smoothing: auto;
+}
+h1{
+  position: flex;
+  margin-left: 20rem;
+  color: var(--base-color);
+  font-size: 1.3rem;
+}
+
+h2 span{
+  color: var(--base-color);
+}
+h3{
+  color: var(--base-colortext);
+}
+h3 span{
+  color: var(--base-color);
+}
+a i{
+  font-size: 1rem;
+  
+}
+/*================ Button darkMode ====================*/
+input[type=checkbox]{
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+label {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 2.25rem;
+  height: 1.0rem;
+  background: var(--base-color);
+  float: right;
+  border-radius: 100px;
+  position: relative;
+}
+
+label::after{
+  content: '';
+  position: absolute;
+  top: 1.6px;
+  left: 4px;
+  width: 0.8rem;
+  height: 0.8rem;
+  background-color: white;
+  border-radius: 90px;
+  transition: 0.3s;
+}
+
+input:checked + label {
+  background-color: gray;
+}
+
+input:checked + label::after {
+  left: calc(100% - 5px);
+  transform: translateX(-100%);
+}
+
+/*=================== Button ===================*/
+.button{
+  color: var(--base-colorwhite);
+  background: var(--base-color);
+  
+  height: 4rem;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 0.9rem;
+  gap: 1rem;
+  font: 500 1rem var(--body-font);
+  transition: background 0.5s; /*cowdow de animação do botão*/
+}
+
+.button:hover {
+  background-color: var(--base-card);
+  border: 3px solid var(--base-color);
+  font: 500 1rem var(--body-font);
+  color: var(--base-colortext);
+}
+/*
+.divider-1{
+  height: 3px;
+  background: linear-gradient(
+    270deg,
+    hsla(var(--hue), 36%, 57%, 1) 0%,
+    hsla(var(--hue), 65%,88%, 0.34) 100%);
+}
+*/
+.divider-1{
+  height: 3px;
+  background: linear-gradient(270deg, hsl(var(--hue), 100%, 50%), var(--base-card));
+}
+
+/*======================== LAYOUT ========================*/
+.container{
+  /*width: 100%;*/
+  margin-left: 1.5rem;
+
+  margin-right: 1.5rem;
+}
+.grid{
+  display: grid;
+  gap: 2rem;
+}
+
+.section{
+  color: var(--base-colortext);
+  padding: calc(5rem + var(--header-height)) 0;
+}
+.section .subtitle{
+  font-size: var(--subtitle-font-size);
+}
+
+.section header {
+  /*todo section tem uma margem com tamanho padrão*/
+  margin-bottom:  4rem;
+}
+/*toda vez que usar o negrito, ira usar essa cor*/
+.section header strong {
+  /*toda vez que usar o negrito, ira usar essa cor*/
+  color: var(--base-color);
+}
+.section strong {
+  /*toda vez que usar o negrito, ira usar essa cor*/
+  color: var(--base-color);
+}
+/*Score Tema Botton*/
+.alinhar{
+  display: grid;
+  grid-auto-flow: column;
+  gap: 1rem;
+  align-items: center;
+}
+nav.show .alinhar{
+  gap: 2rem;
+}
+
+.toggleMode blockquote{
+  display: grid;
+  grid-auto-flow: column;
+  gap: 0.4rem;
+  align-items: center;
+}
+.toggleMode blockquote .alterado{
+  position: relative;
+  user-select: none;
+  background: var(--base-card);
+  color: var(--base-colortext);
+  box-shadow: 0px 0px 12px rgb(0, 0, 0, 0.5);
+  padding: 0.2rem;
+  left: 20%;
+  border-radius: 10px;
+  transition: linear 0.2s;
+
+  visibility: hidden;
+  opacity: 0;
+}
+
+.toggleMode blockquote:hover .alterado{
+  opacity: 1;
+  visibility: visible;
+  left: 0%;
+}
+
+
+#header {
+  border-bottom: 1px solid #424242;
+  margin-bottom:  2rem;
+  display: flex;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: var(--bg-header);
+  backdrop-filter: blur(4px);
+  width: 100%;
+}
+/*sombra do header (rodapé de cima)*/
+#header.scroll {
+  /*background: var(--base-color);*/
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.518);
+}
+/* estilo de mudar a cor do titulo ao rolar com o scroll
+#header.scroll .logo span{
+  color: #ffffff;
+}
+#header.scroll .icon-menu{
+  color: #ffffff;
+}
+*/ 
+
+
+/*======================== LOGO ========================*/
+.logo{
+  font: 700 1.31rem var(--title-font);
+  color: var(--base-color);
+
+}
+.logo span{
+  color: var(--base-colortext);
+}
+/*rodapé*/
+.logo-alt{
+  color: #000000;
+}
+.logo-alt span{
+  color: var(--base-colorwhite);
+}
+
+/*======================== NAVIGATION ========================*/
+
+nav{
+  height: var(--header-height);
+  display: flex;
+  align-items: center; /*Centro do Titulo*/
+  justify-content: space-between;
+  width: 100%;
+}
+/*pegando todas as class, nav ul li*/
+nav ul li{
+  text-align: center;
+}
+/*segundos da animação do menu quando o mouse passar por cima*/
+/*color 0.2s significa só na cor*/
+nav ul li a{
+  transition: color 0.2s;
+  /*possição relativa da animação*/
+  position: relative;
+}
+/*hover: quando eu passar o mouse em cima da class a*/
+nav ul li a:hover,
+nav ul li a.active{
+  color: var(--base-color);
+}
+/*quando ele fizer o hover*/
+/*after significa "após"*/
+nav ul li a::after {
+  content: '';
+  /*eu preciso que ele não apareça no começo*/
+  width: 0%;
+  height: 2px;
+  background: var(--base-color);
+
+  /*possição absoluta com a relativa no codigo acima*/
+  position: absolute;
+  left: 0;
+  bottom: -1.5rem;
+  /*para animar o traço, precisa do transition*/
+  transition: width 0.2s;
+}
+
+nav ul li a:hover::after,
+nav ul li a.active::after {
+  width: 100%;
+}
+
+
+/*======================== MENU ========================*/
+/*Menu off*/
+nav .menu {
+  opacity: 0; /*opacidade*/
+  visibility: hidden; /*hidden = escondido*/
+  top: -20rem;
+  transition: 0.2s;
+}
+/*animação nao piscar a transição, ira desaparecer ao abrir*/
+nav .menu ul{
+  display: none;
+}
+/*Mostrar MENU*/
+/*Voltar a visibilidade do menu*/
+nav.show .menu{
+  opacity: 1;
+  visibility: visible;
+
+  background: var(--background);
+  /*largura do menu*/
+  height: 100vh;
+  width: 100vw;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: grid; /*Para largura height */
+  place-content: center; /*joga para o centro da tela*/
+}
+/*ao abrir ira fazer a transição de cima para baixo*/
+nav.show .menu ul {
+  display: grid;
+}
+/*eu quero que ele seja grid quando ele for show*/
+nav.show ul.grid{
+  gap: 4rem;
+}
+
+/*Toggle menu, puxando a class no index*/
+.toggle {
+  color: var(--base-color);
+  font-size: 1.5rem;
+  cursor: pointer; /*codigo mãozinha do mouse*/
+}
+
+/*Open Menu (toggle = liga/desliga se tiver ligado/vai desligar, se tiver desligado/ligar)*/
+nav .icon-close{
+  visibility: hidden;
+  opacity: 0;
+
+  position: absolute;
+  /*animação da interação top de cima para baixo*/
+  top: -1.5rem;
+  right: 1.5rem;
+  /*TRANSICAO BACANA/Movimentação do X de cima para baixo*/
+  transition: 0.2s;
+}
+
+nav.show div.icon-close{
+  visibility: visible;
+  opacity: 1;
+  /*animação da interação top de baixo para cima*/
+  top: 1.5rem;
+}
+
+
+/*======================== HOME ========================*/
+#home{
+overflow: hidden;
+}
+#home .container{
+  margin: 0;
+}
+
+#home .image{
+  position: relative;
+}
+
+/*Quadrado azul atrás da logo*/
+#home .image::before{
+  content: '';
+  height: 100%;
+  width: 100%;
+  background: var(--base-color);
+  position: absolute;
+  top: -10%;
+  left: 16.8%;
+  z-index: 0;
+}
+
+#home .image img{
+  position: relative;
+  right: 2.93rem;
+}
+
+#home .image img,
+#home .image::before{
+  border-radius: 10px;
+}
+
+#home .text{
+  color: var(--base-colortext);
+  margin-left: 1.5;
+  margin-right: 1.5;
+  text-align: center;
+}
+
+#home .text h1{
+  color: var(--base-colortext);
+  margin-bottom: 1rem;
+}
+
+#home .text p{
+  margin-bottom: 2rem;
+  max-width: 100%;
+}
+/*======================== SERVICES ========================*/
+/*tamanho do card*/
+.cards.grid{
+  gap:1.5rem;
+}
+
+.card {
+  background: var(--base-card);
+  /*tamanho do card  e 2rem é tamanho lateral*/
+  padding: 0.625rem 2rem;
+  /*gerar os cards*/
+  box-shadow: 0px 0px 12px rgb(0, 0, 0, 0.2);
+  /*linha de baixo da borda*/
+  border-bottom: 0.25rem solid var(--base-color);
+  /*arredondar os 2 lados de cima do card = 0 0 é a parte de baixo */
+  border-radius: 1rem 1rem 0 0;
+  text-align: center;
+}
+/*Tamanho e posição das imagem do vip*/
+.card img{
+  position: relative;
+  display: inline-block;
+  width: 5rem;
+}
+/*Tamanho do titulo*/
+.card .title {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+/*======================== Imagem Staff ========================*/
+
+#ceos .imageceo{
+  display: flex;
+  justify-content: space-around;
+}
+
+
+
+/*======================== Comentários ========================*/
+#comentarios{
+  background: var(--background);
+}
+#comentarios .container{
+  margin-left: 0;
+  margin-right: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+#comentarios header{
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  margin-bottom: 0;
+
+}
+#comentarios blockquote{
+  padding: 2rem;
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 0.25rem;
+  background: var(--base-card);
+}
+#comentarios blockquote p{
+  position: relative;
+  text-indent: 1.875rem;
+  margin-bottom: 1.5rem;
+  color: var(--base-colortext);
+}
+#comentarios blockquote p span{
+  font: 700 2.5rem serif;
+  position: absolute;
+  top: -9px;
+  left: -2rem;
+  color: var(--base-color);
+}
+
+#comentarios cite {
+  display: flex;
+  align-items: center;
+  font-style: normal;
+  color: hsla(0, 0%, 46, 1);
+}
+
+#comentarios cite img {
+  width: 2rem;
+  height: 2rem;
+  object-fit: cover;
+  clip-path: circle();  /*fica circular*/
+  margin-right: 0.5rem;
+}
+
+/*SWIPER*/
+.swiper-slide{
+  height: auto;
+  padding: 4rem 1rem;
+}
+.swiper-pagination-bullet {
+  width: 0.75rem;
+  height: 0.75rem;
+  background: var(--base-color);
+}
+
+.swiper-pagination-bullet-active { /*bolinha do slide*/
+  
+  background: var(--base-color);
+}
+
+
+/*======================== CONTACT ========================*/
+#contact{
+  background: var(--backgroundcontact) ;
+}
+#contact .grid{
+  gap: 4rem;
+}
+
+#contact .text p{
+  margin-bottom: 2rem;
+}
+#contact .button i,
+#contact ul li i {
+  font-size: 1.5rem;
+  margin-right: 0.625rem;
+}
+#contact ul.grid {
+  gap: 2rem;
+}
+#contact ul li{
+  display: flex;
+  align-items: center;
+  
+}
+#contact ul li i{
+  color: var(--base-color);
+}
+
+/*======================== FOOTER ========================*/
+footer{
+  background: var(--base-color);
+}
+footer.section {
+  padding: 4rem 0;
+}
+
+footer .logo {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+footer .brand p{
+  color: var(--base-colorwhite);
+  margin-bottom: 0.75rem;
+}
+
+footer i{
+  font-size: 1.5rem;
+  color: var(--base-colorwhite)
+}
+footer .social{
+  grid-auto-flow: column;
+  width: fit-content;
+}
+
+footer .social a {
+  /*espaçamento entre os icons*/
+  margin-right: 2rem;
+  /*outra possibilidade
+  display: flex;
+  gap: 2rem;
+  */
+  transition: 0.3s;
+  /*sem o display, não recebe a mudança do transform*/
+  display: inline-block;
+}
+/*animação dos icon social*/
+footer .social a:hover{
+  transform: translateY(-8px);
+}
+/*back-to-top*/
+.back-to-top{
+  background: var(--base-color);
+  color: var(--base-colorwhite);
+
+  position: fixed;
+  z-index: 1;
+  right: 1rem;
+  bottom: 1rem;
+
+  padding: 0.8rem;
+  /*aredondar o item*/
+  clip-path: circle();
+
+  font-size: 1.5rem;
+  line-height: 0;
+
+  visibility: hidden;
+  opacity: 0;
+
+  transition: 0.3s;
+  transform: translateY(100%);
+}
+
+.back-to-top.show {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+/*RESPONSIVO*/
+/*==========MEDIA QUERIES===========*/
+/*  extra large devices: +1200 */
+  @media (min-width: 1200px) {
+    .container {
+      max-width: 1120px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section {
+      padding: 10rem 0;
+    }
+
+    .section header,
+    #comentarios header {
+      max-width: 32rem;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    nav .menu {
+      opacity: 1;
+      visibility: visible;
+      top: 0;
+    }
+
+    nav .menu ul{
+      display: flex;
+      gap: 2rem
+    }
+    nav .menu ul li a.title{
+      font: 400 1rem var(--body-font);
+      -webkit-font-smoothing: antialiased;
+    }
+    nav .menu ul li a.title.active{
+      font-weight: bold;
+      -webkit-font-smoothing: auto;
+    }
+
+    nav .icon-menu{
+      display: none;
+    }
+
+    main{
+      margin-top: var(--header-height);
+    }
+    /* Home */
+    #home .container{
+      grid-auto-flow: column;
+      justify-content: space-between;
+      margin: 0 auto;
+    }
+
+    #home .image {
+      order: 1;
+    }
+    #home .text {
+      order: 0;
+      margin-left: 2rem;
+      margin-right: 2rem;
+      margin-top: 8rem;
+    }
+
+    /* About */
+    #about .container{
+      margin: 0 auto;
+      grid-auto-flow: column;
+    }
+
+    /*services*/
+    #cardC{
+      transition: ease 0.3s;
+    }
+    #cardC:hover{
+      transform: scale3D(1.2, 1.2, 1.2);
+    }
+
+    .cards {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    .card {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+
+    /*Comentarios*/
+    #comentarios .container {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    /*Contact*/
+    #contact .container{
+      grid-auto-flow: column;
+      align-items: center;
+    }
+    #contact .text{
+      max-width: 25rem;
+    }
+    /*Footer*/
+    footer .section{
+      padding: 3.75rem 0;
+    }
+    footer .container{
+      grid-auto-flow: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+    footer .logo{
+      font-size: 2.25rem;
+    }
+
+} 
+
+
+/*  large device: +992 */
+  @media (min-width: 992px) {
+  :root{
+    --subtitle-font-size: 1.125rem;
+
+  }
+}
+
+
+/*  large device: 600+1200 */
+  @media (min-width: 876px){
+    .section {
+      padding: 10rem 0;
+    }
+
+    /* Home */
+    #home .container{
+      grid-auto-flow: column;
+      justify-content: space-between;
+      margin: 0 auto;
+    }
+
+    #home .image {
+      order: 1;
+    }
+    #home .text {
+      order: 0;
+      margin-left: 2rem;
+      margin-right: 2rem;
+      margin-top: 8rem;
+    }
+
+    /*services*/
+    .cards {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+  /*  large device: 600+1200 */
+  @media (min-width: 676px){
+    .section {
+      padding: 10rem 0;
+    }
+
+    /* Home */
+    #home .container{
+      grid-auto-flow: column;
+      justify-content: space-between;
+      margin: 0 auto;
+    }
+    #home .image img{
+      position: relative;
+      right: 1rem
+    }
+    #home .text{
+      margin-left: 2rem;
+    }
+  }
+
+
+
+
