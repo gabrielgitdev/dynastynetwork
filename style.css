@@ -6,8 +6,6 @@
   box-sizing: border-box;
 }
 ul{
-  /*para tirar as bolinhas padroes do documento inteiro*/
-  /*tudo que tenha ul, não tera as bolinhas padrao das listas*/
   list-style: none;
 }
 
@@ -49,7 +47,6 @@ img{
 
 
 /*======================== BASE ========================*/
-/*clicando ele rola a pagina para o objetivo que foi clicado*/
 html{
   scroll-behavior: smooth;
 }
@@ -153,7 +150,7 @@ input:checked + label::after {
   padding: 0 0.9rem;
   gap: 1rem;
   font: 500 1rem var(--body-font);
-  transition: background 0.5s; /*cowdow de animação do botão*/
+  transition: background 0.5s;
 }
 
 .button:hover {
@@ -162,15 +159,6 @@ input:checked + label::after {
   font: 500 1rem var(--body-font);
   color: var(--base-colortext);
 }
-/*
-.divider-1{
-  height: 3px;
-  background: linear-gradient(
-    270deg,
-    hsla(var(--hue), 36%, 57%, 1) 0%,
-    hsla(var(--hue), 65%,88%, 0.34) 100%);
-}
-*/
 .divider-1{
   height: 3px;
   background: linear-gradient(270deg, hsl(var(--hue), 100%, 50%), var(--base-card));
@@ -178,7 +166,6 @@ input:checked + label::after {
 
 /*======================== LAYOUT ========================*/
 .container{
-  /*width: 100%;*/
   margin-left: 1.5rem;
 
   margin-right: 1.5rem;
@@ -197,16 +184,12 @@ input:checked + label::after {
 }
 
 .section header {
-  /*todo section tem uma margem com tamanho padrão*/
   margin-bottom:  4rem;
 }
-/*toda vez que usar o negrito, ira usar essa cor*/
 .section header strong {
-  /*toda vez que usar o negrito, ira usar essa cor*/
   color: var(--base-color);
 }
 .section strong {
-  /*toda vez que usar o negrito, ira usar essa cor*/
   color: var(--base-color);
 }
 /*Score Tema Botton*/
@@ -261,19 +244,9 @@ nav.show .alinhar{
   backdrop-filter: blur(4px);
   width: 100%;
 }
-/*sombra do header (rodapé de cima)*/
 #header.scroll {
-  /*background: var(--base-color);*/
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.518);
 }
-/* estilo de mudar a cor do titulo ao rolar com o scroll
-#header.scroll .logo span{
-  color: #ffffff;
-}
-#header.scroll .icon-menu{
-  color: #ffffff;
-}
-*/ 
 
 
 /*======================== LOGO ========================*/
@@ -285,7 +258,6 @@ nav.show .alinhar{
 .logo span{
   color: var(--base-colortext);
 }
-/*rodapé*/
 .logo-alt{
   color: #000000;
 }
@@ -302,36 +274,26 @@ nav{
   justify-content: space-between;
   width: 100%;
 }
-/*pegando todas as class, nav ul li*/
 nav ul li{
   text-align: center;
 }
-/*segundos da animação do menu quando o mouse passar por cima*/
-/*color 0.2s significa só na cor*/
 nav ul li a{
   transition: color 0.2s;
-  /*possição relativa da animação*/
   position: relative;
 }
-/*hover: quando eu passar o mouse em cima da class a*/
 nav ul li a:hover,
 nav ul li a.active{
   color: var(--base-color);
 }
-/*quando ele fizer o hover*/
-/*after significa "após"*/
 nav ul li a::after {
   content: '';
-  /*eu preciso que ele não apareça no começo*/
   width: 0%;
   height: 2px;
   background: var(--base-color);
 
-  /*possição absoluta com a relativa no codigo acima*/
   position: absolute;
   left: 0;
   bottom: -1.5rem;
-  /*para animar o traço, precisa do transition*/
   transition: width 0.2s;
 }
 
@@ -349,18 +311,15 @@ nav .menu {
   top: -20rem;
   transition: 0.2s;
 }
-/*animação nao piscar a transição, ira desaparecer ao abrir*/
 nav .menu ul{
   display: none;
 }
 /*Mostrar MENU*/
-/*Voltar a visibilidade do menu*/
 nav.show .menu{
   opacity: 1;
   visibility: visible;
 
   background: var(--background);
-  /*largura do menu*/
   height: 100vh;
   width: 100vw;
 
@@ -368,42 +327,34 @@ nav.show .menu{
   top: 0;
   left: 0;
 
-  display: grid; /*Para largura height */
-  place-content: center; /*joga para o centro da tela*/
+  display: grid;
+  place-content: center;
 }
-/*ao abrir ira fazer a transição de cima para baixo*/
 nav.show .menu ul {
   display: grid;
 }
-/*eu quero que ele seja grid quando ele for show*/
 nav.show ul.grid{
   gap: 4rem;
 }
 
-/*Toggle menu, puxando a class no index*/
 .toggle {
   color: var(--base-color);
   font-size: 1.5rem;
-  cursor: pointer; /*codigo mãozinha do mouse*/
+  cursor: pointer;
 }
-
-/*Open Menu (toggle = liga/desliga se tiver ligado/vai desligar, se tiver desligado/ligar)*/
 nav .icon-close{
   visibility: hidden;
   opacity: 0;
 
   position: absolute;
-  /*animação da interação top de cima para baixo*/
   top: -1.5rem;
   right: 1.5rem;
-  /*TRANSICAO BACANA/Movimentação do X de cima para baixo*/
   transition: 0.2s;
 }
 
 nav.show div.icon-close{
   visibility: visible;
   opacity: 1;
-  /*animação da interação top de baixo para cima*/
   top: 1.5rem;
 }
 
@@ -419,8 +370,6 @@ overflow: hidden;
 #home .image{
   position: relative;
 }
-
-/*Quadrado azul atrás da logo*/
 #home .image::before{
   content: '';
   height: 100%;
@@ -459,30 +408,23 @@ overflow: hidden;
   max-width: 100%;
 }
 /*======================== SERVICES ========================*/
-/*tamanho do card*/
 .cards.grid{
   gap:1.5rem;
 }
 
 .card {
   background: var(--base-card);
-  /*tamanho do card  e 2rem é tamanho lateral*/
   padding: 0.625rem 2rem;
-  /*gerar os cards*/
   box-shadow: 0px 0px 12px rgb(0, 0, 0, 0.2);
-  /*linha de baixo da borda*/
   border-bottom: 0.25rem solid var(--base-color);
-  /*arredondar os 2 lados de cima do card = 0 0 é a parte de baixo */
   border-radius: 1rem 1rem 0 0;
   text-align: center;
 }
-/*Tamanho e posição das imagem do vip*/
 .card img{
   position: relative;
   display: inline-block;
   width: 5rem;
 }
-/*Tamanho do titulo*/
 .card .title {
   font-size: 1.5rem;
   margin-bottom: 0.75rem;
@@ -545,7 +487,7 @@ overflow: hidden;
   width: 2rem;
   height: 2rem;
   object-fit: cover;
-  clip-path: circle();  /*fica circular*/
+  clip-path: circle();
   margin-right: 0.5rem;
 }
 
@@ -560,8 +502,7 @@ overflow: hidden;
   background: var(--base-color);
 }
 
-.swiper-pagination-bullet-active { /*bolinha do slide*/
-  
+.swiper-pagination-bullet-active {  
   background: var(--base-color);
 }
 
@@ -622,21 +563,13 @@ footer .social{
 }
 
 footer .social a {
-  /*espaçamento entre os icons*/
   margin-right: 2rem;
-  /*outra possibilidade
-  display: flex;
-  gap: 2rem;
-  */
   transition: 0.3s;
-  /*sem o display, não recebe a mudança do transform*/
   display: inline-block;
 }
-/*animação dos icon social*/
 footer .social a:hover{
   transform: translateY(-8px);
 }
-/*back-to-top*/
 .back-to-top{
   background: var(--base-color);
   color: var(--base-colorwhite);
@@ -647,7 +580,6 @@ footer .social a:hover{
   bottom: 1rem;
 
   padding: 0.8rem;
-  /*aredondar o item*/
   clip-path: circle();
 
   font-size: 1.5rem;
@@ -790,7 +722,7 @@ footer .social a:hover{
 }
 
 
-/*  large device: 600+1200 */
+/*  large device: 800+1200 */
   @media (min-width: 876px){
     .section {
       padding: 10rem 0;
