@@ -4,9 +4,7 @@ const toggle = document.querySelectorAll('nav .toggle')
 
 for (const element of toggle) {
   element.addEventListener('click', function () {
-    //pegando o nav depois de clicar como se fosse true e false
     nav.classList.toggle('show')
-    //alert('chegamos aqui')
   })
 }
 
@@ -132,7 +130,7 @@ const swiper = new Swiper('.swiper-container', {
   }
 })
 
-/*SCROLLREVEAL: Mostrar elementos quando der scroll na página pela api puxando no index */
+/*SCROLLREVEAL: Mostrar elementos quando for scroll na página pela api puxando no index */
 const scrollReveal = ScrollReveal({
   origin: 'top',
   distance: '30px',
